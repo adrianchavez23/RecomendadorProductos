@@ -7,3 +7,7 @@ A este nuevo dataframe se le tienen que aplicar transformaciones necesarias para
 Una vez obtenido el dataframe de predicción, se puede hacer la predicción al modelo del cluster del cliente actual.
 Estas predicciones se guardan en un diccionario de resultados para luego ordenarlas de mayor a menor. La respuesta del servidar es una lista de las Top 10 CLientes con mejor probabilidad de éxito.
 
+# Instrucciones de uso
+- Descargar librerias (joblib, no, pandas, scikitlearn)
+- python servidor.py
+
