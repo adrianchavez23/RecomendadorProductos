@@ -150,7 +150,7 @@ def encode_data(data, client_data, numero_cluster):
 
 
 
-@app.route("/",methods=['GET'])
+@app.route("/form",methods=['GET'])
 def formulario():
     return render_template('interfaz.html')
 
@@ -194,6 +194,6 @@ def prediccion():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=3001)
+    app.run(debug=False,host='0.0.0.0',port='8080')
 
   
