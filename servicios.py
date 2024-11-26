@@ -186,6 +186,8 @@ def prediccion():
 
         resultados_ordenados = sorted(resultados, key=lambda x: x['Porcentaje'], reverse=True)
 
+        resultados.clear()
+
 
         return jsonify({'status': 1, 'message': 'Success', 'resultados': resultados_ordenados[:10], 'userdata': user_input_data}) 
     #invalido 
