@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo Predictivo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<header class="navbar">
+    <h1>Recomendador de productos</h1>
+</header>
+
+<body>
+    <div class="container">
+        <!-- Form container -->
+        <div class="form-container">
+            <h2>Ingresa las características del nuevo producto:</h1>
+            
+                <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                    <div style="width: 210px; margin-left: 10px;">
+                        <label for="Productos_Por_Empaque" class="form-label">Productos por empaque</label>
+                        <input type="number" class="form-control" id="Productos_Por_Empaque" name="Productos_Por_Empaque">
+                    </div>
+                    <div style="width: 210px; margin-left: 10px;">
+                        <label for="Size" class="form-label">Tamaño</label>
+                        <select class="form-control" name="Size" id="Size">
+                            <option value=""></option>
+                            <option value="INDIVIDUAL">Individual</option>
+                            <option value="FAMILIAR">Familiar</option>
+                        </select>
+                    </div>                
+                </div>
+                <div style="display: flex; flex-direction: row;">
+                    <div style="width: 210px; margin-left: 10px;">
+                        <label for="ProdKey" class="form-label">Clave de Producto</label>
+                        <select class="form-control" name="ProdKey" id="ProdKey">
+                            <option value=""></option>
+                            <option value="AGUA SABORIZADA">AGUA SABORIZADA</option>
+                            <option value="ISOTONICOS">ISOTONICOS</option>
+                            <option value="SABORES INDIVIDUAL RETORNABLE">SABORES INDIVIDUAL RETORNABLE</option>
+                            <option value="AGUA PURIFICADA FAMILIAR">AGUA PURIFICADA FAMILIAR</option>
+                            <option value="AGUA MINERAL INDIVIDUAL">AGUA MINERAL INDIVIDUAL</option>
+                            <option value="COLAS REGULAR INDIVIDUAL NO RETORNABLE">COLAS REGULAR INDIVIDUAL NO RETORNABLE</option>
+                            <option value="LECHE UHT SABORIZADA">LECHE UHT SABORIZADA</option>
+                            <option value="BEBIDAS REFRESCANTES">BEBIDAS REFRESCANTES</option>
+                            <option value="COLAS REGULAR FAMILIAR RETORNABLE">COLAS REGULAR FAMILIAR RETORNABLE</option>
+                            <option value="AGUA MINERAL CON SABOR">AGUA MINERAL CON SABOR</option>
+                            <option value="SABORES INDIVIDUAL NO RETORNABLE">SABORES INDIVIDUAL NO RETORNABLE</option>
+                            <option value="BEBIDAS ENERGETICAS">BEBIDAS ENERGETICAS</option>
+                            <option value="JUGOS Y NECTARES LONCHERA">JUGOS Y NECTARES LONCHERA</option>
+                            <option value="SABORES FAMILIAR RETORNABLE">SABORES FAMILIAR RETORNABLE</option>
+                            <option value="SABORES FAMILIAR NO RETORNABLE">SABORES FAMILIAR NO RETORNABLE</option>
+                            <option value="BEBIDAS DE SOYA">BEBIDAS DE SOYA</option>
+                            <option value="NARANJADAS INDIVIDUAL">NARANJADAS INDIVIDUAL</option>
+                            <option value="BEBIDA CON ELECTROLITOS">BEBIDA CON ELECTROLITOS</option>
+                            <option value="COLAS LIGHT FAMILIAR">COLAS LIGHT FAMILIAR</option>
+                            <option value="NOT_SUGGESTED">NOT_SUGGESTED</option>
+                            <option value="COLAS LIGHT INDIVIDUAL">COLAS LIGHT INDIVIDUAL</option>
+                            <option value="ADAS INDIVIDUAL">ADAS INDIVIDUAL</option>
+                            <option value="JUGOS Y NECTARES HOGAR">JUGOS Y NECTARES HOGAR</option>
+                            <option value="AGUA PURIFICADA INDIVIDUAL">AGUA PURIFICADA INDIVIDUAL</option>
+                            <option value="TE">TE</option>
+                            <option value="COLAS REGULAR FAMILIAR NO RETORNABLE">COLAS REGULAR FAMILIAR NO RETORNABLE</option>
+                            <option value="JUGOS Y NECTARES IMPULSO">JUGOS Y NECTARES IMPULSO</option>
+                            <option value="BEBIDAS INFANTILES">BEBIDAS INFANTILES</option>
+                            <option value="ADAS FAMILIAR">ADAS FAMILIAR</option>
+                            <option value="LECHE UHT ESPECIALIZADA">LECHE UHT ESPECIALIZADA</option>
+                            <option value="NARANJADAS FAMILIAR">NARANJADAS FAMILIAR</option>
+                            <option value="BEBIDAS CON ALCOHOL">BEBIDAS CON ALCOHOL</option>
+                            <option value="COLAS REGULAR INDIVIDUAL RETORNABLE">COLAS REGULAR INDIVIDUAL RETORNABLE</option>
+                            <option value="LECHE UHT REGULAR">LECHE UHT REGULAR</option>
+                            <option value="AGUA MINERAL FAMILIAR">AGUA MINERAL FAMILIAR</option>
+                        </select>
+                    </div>
+                    <div style="width: 210px; margin-left: 10px;">
+                        <label for="Flavor" class="form-label">Sabor</label>
+                        <select class="form-control" name="Flavor" id="Flavor">
+                            <option value=""></option>
+                            <option value="LIMON">LIMON</option>
+                            <option value="ARÁNDANO ACAÍ">ARÁNDANO ACAÍ</option>
+                            <option value="UVA">UVA</option>
+                            <option value="AGUA">AGUA</option>
+                            <option value="AGUA MINERAL">AGUA MINERAL</option>
+                            <option value="COLA">COLA</option>
+                            <option value="MORAS">MORAS</option>
+                            <option value="CHOCOLATE">CHOCOLATE</option>
+                            <option value="DURAZNO MANZANA">DURAZNO MANZANA</option>
+                            <option value="HAMILTON UVA">HAMILTON UVA</option>
+                            <option value="GRANADA">GRANADA</option>
+                            <option value="FRESA">FRESA</option>
+                            <option value="DURAZNO">DURAZNO</option>
+                            <option value="PONCHE">PONCHE</option>
+                            <option value="MANZANA">MANZANA</option>
+                            <option value="MANGO">MANGO</option>
+                            <option value="NARANJA">NARANJA</option>
+                            <option value="CITRUS">CITRUS</option>
+                            <option value="SANGRIA">SANGRIA</option>
+                            <option value="TORONJA">TORONJA</option>
+                            <option value="SURTIDA">SURTIDA</option>
+                            <option value="CAJETA">CAJETA</option>
+                            <option value="DESCAFEINADO TUESTE OSCURO">DESCAFEINADO TUESTE OSCURO</option>
+                            <option value="LIMA LIMON">LIMA LIMON</option>
+                            <option value="FRUTAS">FRUTAS</option>
+                            <option value="MANGO LOCO">MANGO LOCO</option>
+                            <option value="LIMÓN PEPINO">LIMÓN PEPINO</option>
+                            <option value="MOCHA ITALIA">MOCHA ITALIA</option>
+                            <option value="ENERGY">ENERGY</option>
+                            <option value="PEPINO PIÑA">PEPINO PIÑA</option>
+                            <option value="TOMATE">TOMATE</option>
+                            <option value="PIÑA">PIÑA</option>
+                            <option value="TE NEGRO">TE NEGRO</option>
+                            <option value="CAPPUCCINO">CAPPUCCINO</option>
+                            <option value="GUARANA">GUARANA</option>
+                            <option value="LECHE DESLACTOSADA">LECHE DESLACTOSADA</option>
+                            <option value="FRESA-GUAYABA">FRESA-GUAYABA</option>
+                            <option value="ALMENDRA">ALMENDRA</option>
+                            <option value="JAMAICA">JAMAICA</option>
+                            <option value="NARANJA MANGO">NARANJA MANGO</option>
+                            <option value="PIÑA JENGRIBRE">PIÑA JENGRIBRE</option>
+                            <option value="LECHE ENTERA">LECHE ENTERA</option>
+                            <option value="MANGO MANZANILLA">MANGO MANZANILLA</option>
+                            <option value="GUANABANA">GUANABANA</option>
+                            <option value="VAINILLA">VAINILLA</option>
+                            <option value="NARANJA MANDARINA">NARANJA MANDARINA</option>
+                            <option value="LO CARB">LO CARB</option>
+                            <option value="ZERO SUGAR">ZERO SUGAR</option>
+                            <option value="FRUTOS">FRUTOS</option>
+                            <option value="XXX">XXX</option>
+                            <option value="PIPELINE PUNCH">PIPELINE PUNCH</option>
+                            <option value="MANDARINA">MANDARINA</option>
+                            <option value="PIÑA COCO">PIÑA COCO</option>
+                            <option value="SABILA">SABILA</option>
+                            <option value="MISTERIO">MISTERIO</option>
+                            <option value="LIGHT NATURAL">LIGHT NATURAL</option>
+                            <option value="CAFE">CAFE</option>
+                            <option value="LECHE LIGHT">LECHE LIGHT</option>
+                            <option value="GUAYABA">GUAYABA</option>
+                            <option value="MANZANA CANELA">MANZANA CANELA</option>
+                            <option value="100% JUGO MANZANA">100% JUGO MANZANA</option>
+                            <option value="CHOCOMENTA">CHOCOMENTA</option>
+                            <option value="PIÑA TROPICAL">PIÑA TROPICAL</option>
+                            <option value="ZERO ULTRA">ZERO ULTRA</option>
+                            <option value="PACIFIC PUNCH">PACIFIC PUNCH</option>
+                            <option value="CARAMEL">CARAMEL</option>
+                            <option value="LECHE DESLACTOSADA L">LECHE DESLACTOSADA L</option>
+                            <option value="COCO">COCO</option>
+                            <option value="RESTORE">RESTORE</option>
+                            <option value="POWER C">POWER C</option>
+                            <option value="ARANDANO">ARANDANO</option>
+                            <option value="TRIPLE CHOCOLATE">TRIPLE CHOCOLATE</option>
+                            <option value="UVA MENTA">UVA MENTA</option>
+                            <option value="100% JUGO NARANJA">100% JUGO NARANJA</option>
+                            <option value="NATURAL">NATURAL</option>
+                            <option value="CHERRY ACAÍ">CHERRY ACAÍ</option>
+                            <option value="MANGO TROPICAL">MANGO TROPICAL</option>
+                            <option value="PERA">PERA</option>
+                            <option value="EXPRESSO">EXPRESSO</option>
+                            <option value="LECHE SEMIDESCREMADA">LECHE SEMIDESCREMADA</option>
+                            <option value="TE VERDE">TE VERDE</option>
+                            <option value="KIWI LIMA Y PEPINO">KIWI LIMA Y PEPINO</option>
+                            <option value="KHAOS">KHAOS</option>
+                        </select>
+                    </div>  
+                </div>
+                <div style="display: flex; flex-direction: row;">
+                    <div style="width: 210px; margin-left: 10px;">
+                        <label for="Brand" class="form-label">Marca</label>
+                        <select class="form-control" name="Brand" id="Brand">
+                            <option value=""></option>
+                            <option value="CIEL EXPRIM">CIEL EXPRIM</option>
+                            <option value="POWERADE FIT">POWERADE FIT</option>
+                            <option value="FANTA">FANTA</option>
+                            <option value="SIERRAZUL AGUA PURIFICADA">SIERRAZUL AGUA PURIFICADA</option>
+                            <option value="TOPO CHICO A.M.">TOPO CHICO A.M.</option>
+                            <option value="COCA-COLA">COCA-COLA</option>
+                            <option value="POWERADE">POWERADE</option>
+                            <option value="SANTA CLARA SABORIZADA">SANTA CLARA SABORIZADA</option>
+                            <option value="DELAWARE PUNCH">DELAWARE PUNCH</option>
+                            <option value="TOPO CHICO TWIST">TOPO CHICO TWIST</option>
+                            <option value="SIDRAL MUNDET">SIDRAL MUNDET</option>
+                            <option value="MONSTER ENERGY">MONSTER ENERGY</option>
+                            <option value="DEL VALLE RESERVA">DEL VALLE RESERVA</option>
+                            <option value="JOYA">JOYA</option>
+                            <option value="DEL VALLE">DEL VALLE</option>
+                            <option value="ADES FRUTAL">ADES FRUTAL</option>
+                            <option value="VALLE FRUT">VALLE FRUT</option>
+                            <option value="TOPO CHICO SANGRIA LIGHT">TOPO CHICO SANGRIA LIGHT</option>
+                            <option value="ISOLITE">ISOLITE</option>
+                            <option value="POWERADE ZERO">POWERADE ZERO</option>
+                            <option value="COCA-COLA SIN AZUCAR">COCA-COLA SIN AZUCAR</option>
+                            <option value="COSTA DESCAFEINADO">COSTA DESCAFEINADO</option>
+                            <option value="COCA-COLA LIGHT">COCA-COLA LIGHT</option>
+                            <option value="SPRITE">SPRITE</option>
+                            <option value="TOPO CHICO">TOPO CHICO</option>
+                            <option value="DEL VALLE Y NADA">DEL VALLE Y NADA</option>
+                            <option value="PREDATOR ENERGY">PREDATOR ENERGY</option>
+                            <option value="COSTA">COSTA</option>
+                            <option value="FLORIDA 7">FLORIDA 7</option>
+                            <option value="DEL VALLE 100% JUGO">DEL VALLE 100% JUGO</option>
+                            <option value="CIEL AGUA PURIFICADA">CIEL AGUA PURIFICADA</option>
+                            <option value="FUZE TEA">FUZE TEA</option>
+                            <option value="FRESCA">FRESCA</option>
+                            <option value="FRUTSI">FRUTSI</option>
+                            <option value="SPRITE SIN AZUCAR">SPRITE SIN AZUCAR</option>
+                            <option value="CIEL MINERALIZADA">CIEL MINERALIZADA</option>
+                            <option value="FANTA SENZAO">FANTA SENZAO</option>
+                            <option value="GLACEAU">GLACEAU</option>
+                            <option value="SANTA CLARA DESLACTOSADA">SANTA CLARA DESLACTOSADA</option>
+                            <option value="TOPO CHICO HARD SELTZER">TOPO CHICO HARD SELTZER</option>
+                            <option value="COCA-COLA LIGHT SIN CAFEINA">COCA-COLA LIGHT SIN CAFEINA</option>
+                            <option value="ADES ALMENDRA SIN AZUCAR">ADES ALMENDRA SIN AZUCAR</option>
+                            <option value="SENZAO">SENZAO</option>
+                            <option value="COCA-COLA ENERGY">COCA-COLA ENERGY</option>
+                            <option value="SANTA CLARA ENTERA">SANTA CLARA ENTERA</option>
+                            <option value="TOPO CHICO SANGRIA">TOPO CHICO SANGRIA</option>
+                            <option value="MANZANA LIFT">MANZANA LIFT</option>
+                            <option value="BURN">BURN</option>
+                            <option value="PULPY">PULPY</option>
+                            <option value="ADES LACTEO">ADES LACTEO</option>
+                            <option value="COCA-COLA CAFE">COCA-COLA CAFE</option>
+                            <option value="SANTA CLARA LIGHT">SANTA CLARA LIGHT</option>
+                            <option value="SPRITE ZERO">SPRITE ZERO</option>
+                            <option value="SANTA CLARA DESLACTOSADA LIGHT">SANTA CLARA DESLACTOSADA LIGHT</option>
+                            <option value="CIEL MINI">CIEL MINI</option>
+                            <option value="SANTA CLARA SEMIDESCREMADA">SANTA CLARA SEMIDESCREMADA</option>
+                            <option value="SANTA CLARA,  YOGURT">SANTA CLARA, YOGURT</option>
+                        </select>
+                    </div>
+                    <div style="width: 210px; margin-left: 10px;">
+                        <label for="Container" class="form-label">Contenedor</label>
+                        <select class="form-control" name="Container" id="Container">
+                            <option value=""></option>
+                            <option value="PLASTICO">PLASTICO</option>
+                            <option value="VIDRIO">VIDRIO</option>
+                            <option value="LATA">LATA</option>
+                            <option value="TETRA PACK">TETRA PACK</option>
+                            <option value="BOLSA">BOLSA</option>
+                            <option value="LATA SLEEK">LATA SLEEK</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: row;">
+                    <div style="width: 210px; margin-left: 10px;">
+                        <label for="MLSize" class="form-label">Contenido (ml)</label>
+                        <input type="number" class="form-control" id="MLSize" name="MLSize">
+                    </div>
+                    <div style="width: 210px; margin-left: 10px;">
+                        <label for="ProductType" class="form-label">Tipo</label>
+                        <select class="form-control" name="ProductType" id="ProductType">
+                            <option value=""></option>
+                            <option value="AGUA SABORIZADA">AGUA SABORIZADA</option>
+                            <option value="ISOTONICOS">ISOTONICOS</option>
+                            <option value="SABORES REGULAR">SABORES REGULAR</option>
+                            <option value="AGUA PURIFICADA">AGUA PURIFICADA</option>
+                            <option value="AGUA MINERAL">AGUA MINERAL</option>
+                            <option value="COLAS REGULAR">COLAS REGULAR</option>
+                            <option value="LECHE UHT SABORIZADA">LECHE UHT SABORIZADA</option>
+                            <option value="BEBIDAS REFRESCANTES">BEBIDAS REFRESCANTES</option>
+                            <option value="BEBIDAS ENERGETICAS">BEBIDAS ENERGETICAS</option>
+                            <option value="JUGOS Y NECTARES">JUGOS Y NECTARES</option>
+                            <option value="BEBIDAS DE SOYA">BEBIDAS DE SOYA</option>
+                            <option value="NARANJADAS">NARANJADAS</option>
+                            <option value="SABORES LIGHT">SABORES LIGHT</option>
+                            <option value="BEBIDA CON ELECTROLITOS">BEBIDA CON ELECTROLITOS</option>
+                            <option value="COLAS LIGHT">COLAS LIGHT</option>
+                            <option value="CAFE MOLIDO">CAFE MOLIDO</option>
+                            <option value="MIXTOS">MIXTOS</option>
+                            <option value="TE">TE</option>
+                            <option value="CAFE GRANO">CAFE GRANO</option>
+                            <option value="BEBIDAS INFANTILES">BEBIDAS INFANTILES</option>
+                            <option value="AGUA FUNCIONAL">AGUA FUNCIONAL</option>
+                            <option value="LECHE UHT ESPECIALIZADA">LECHE UHT ESPECIALIZADA</option>
+                            <option value="BEBIDA ALCOHOLICA">BEBIDA ALCOHOLICA</option>
+                            <option value="LECHE UHT REGULAR">LECHE UHT REGULAR</option>
+                            <option value="YOGURT BATIDO">YOGURT BATIDO</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: row;">
+                    <div style="width: 210px; margin-left: 10px;">
+                        <label for="Returnability" class="form-label">Retornabilidad</label>
+                        <select class="form-control" name="Returnability" id="Returnability">
+                            <option value=""></option>
+                            <option value="NO RETORNABLE">NO RETORNABLE</option>
+                            <option value="RETORNABLE">RETORNABLE</option>
+                        </select>
+                    </div>
+                </div>
+                
+               
+                <button class="btn btn-primary" id="enviar">Obtener resultados</button>
+            
+        </div>
+        
+        <!-- Results container -->
+        <div class="results-container"></div>
+            <table id="clients-table">
+                <thead>
+                <tr>
+                    <th>CustomerId</th>
+                    <th>Porcentaje de éxito</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr id="no-results">
+                        <td colspan="2" class="no-results-message">No hay resultados disponibles.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="loading-overlay">
+            <div id="loading-spinner"></div>
+          </div>
+
+        <button class="btn btn-clear" id="clear-all">Limpiar Todo</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='index.js') }}" type="module"></script>        
+</body>
+</html>

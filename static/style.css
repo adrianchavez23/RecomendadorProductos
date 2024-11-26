@@ -1,0 +1,180 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "MyriadPro", sans-serif;
+}
+
+header {
+  width: 100%;
+  background-color: #E71C47;
+  padding: 1rem;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  font-size: 1.8rem;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  background-color: #f4f4f4;
+  color: #E71C47;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.form-container {
+  max-width: 1200px;
+}
+
+/* Table container */
+.results-container {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  align-items: flex-start;
+  padding: 1rem;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: white;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #90452e;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #90452e;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0 1rem 0;
+  border: 1px solid #90452e;
+  border-radius: 4px;
+}
+
+.form-control:focus {
+  border-color: #E71C47;
+  outline: none;
+}
+
+.btn-primary {
+  display: inline-block;
+  width: 100%;
+  padding: 0.6rem;
+  background-color: #E71C47;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #d0193e;
+}
+
+#clients-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  border: 1px solid #E71C47;
+}
+
+#clients-table th, #clients-table td {
+  padding: 10px;
+  text-align: left;
+}
+
+#clients-table th {
+  background-color: #E71C47;
+  color: white;
+}
+
+#clients-table td {
+  border-top: 1px solid #ddd;
+}
+
+#no-results {
+  text-align: center;
+  font-style: italic;
+  color: #777;
+}
+
+/* Style for the "Clear All" button */
+.btn-clear {
+  padding: 0.6rem;
+  background-color: #777;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.btn-clear:hover {
+  background-color: #555;
+}
+
+/* Spinner Overlay */
+#loading-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 999; /* Ensure it covers everything on the page */
+}
+
+/* Loading Spinner */
+#loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ccc;
+  border-top: 4px solid #E71C47; /* Spinner color */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
