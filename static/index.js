@@ -34,7 +34,7 @@ enviarButton.addEventListener('click', ()=> {
   };
 
   // Send the HTTP request
-  fetch('http://107.23.9.132:8080/predict', {  // replace with the actual endpoint
+  fetch('http://18.234.125.233:8080/predict', {  // replace with the actual endpoint
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
